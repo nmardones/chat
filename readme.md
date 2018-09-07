@@ -12,6 +12,11 @@
 
 The Chat is developed with laravel in a docker environment
 
+## Requirements to install
+
+* docker
+* docker-compose
+
 ## Installation
 
 > github download
