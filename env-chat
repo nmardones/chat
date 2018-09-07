@@ -1,7 +1,7 @@
 APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=base64:oBaFfTvQEe57TVkUKTe82q7bnZ93U0aTfVjjGYRmSos=
-APP_DEBUG=true
+APP_DEBUG=false
 APP_URL=http://chat
 
 LOG_CHANNEL=stack

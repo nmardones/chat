@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use Cache;
 use Illuminate\Http\Request;
 use App\Events\MessageSent;
 use Illuminate\Support\Facades\Auth;
@@ -54,17 +55,16 @@ class ChatsController extends Controller
 
     public function storePosts()
     {
-        //$posts = Message::all();
         $posts = Message::with('user')->get();
 
         foreach ($posts as $post) {
-            $this->putInCache( $post->user->name,$post->message, 'message' );
+            $this->putInCache( $post->user->name,$post->message);
         }
     }
 
-    private function putInCache($key, $content, $tag)
+    private function putInCache($key, $content)
     {
-        \Cache::tags($tag)->put($key, $content, 43200);
+        Cache::store('redis')->put($key, $content);
     }
 
 }
