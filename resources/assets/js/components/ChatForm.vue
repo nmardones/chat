@@ -18,8 +18,12 @@
             @keyup.enter="sendMessage">
         </textarea>
         <span class="form-group">
-            <button class="btn btn-primary btn-block " id="btn-chat" @click="sendMessage">
-                Enviar
+            <button
+                class="btn btn-primary btn-block "
+                id="btn-chat"
+                @click="sendMessage"
+            >
+            Enviar
             </button>
         </span>
     </div>

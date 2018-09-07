@@ -26,6 +26,13 @@ The Chat is developed with laravel in a docker environment
 > Up docker-compose
 * sudo ./up.sh
 
+##  Login to chat
+
+To enter you must go to http://localhost
+
+* email = admin@gmail.com
+* password = secret
+
 ## About Me!  
 
 @nmardones ;) 
