@@ -28,7 +28,6 @@ class ChatsController extends Controller
      */
     public function fetchMessages()
     {
-        //dd(Message::with('user')->get());
         return Message::with('user')->get();
     }
 
@@ -48,6 +47,24 @@ class ChatsController extends Controller
 
         broadcast(new MessageSent($user, $message))->toOthers();
 
+        $this->storePosts();
+
         return ['status' => 'Message Sent!'];
     }
+
+    public function storePosts()
+    {
+        //$posts = Message::all();
+        $posts = Message::with('user')->get();
+
+        foreach ($posts as $post) {
+            $this->putInCache( $post->user->name,$post->message, 'message' );
+        }
+    }
+
+    private function putInCache($key, $content, $tag)
+    {
+        \Cache::tags($tag)->put($key, $content, 43200);
+    }
+
 }
